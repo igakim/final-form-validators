@@ -1,1 +1,1 @@
-export default (errorMessage) => (value) => (value ? undefined : errorMessage);
+export default (errorMessage = 'This field is required!') => (value) => (value ? undefined : errorMessage);

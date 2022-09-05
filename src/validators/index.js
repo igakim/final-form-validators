@@ -1,12 +1,12 @@
 import required from './required';
-import shouldBeEquals from './shouldBeEquals';
+import shouldBeEqualWith from './shouldBeEqualWith';
 import shouldBeGTE from './shouldBeGTE';
 import shouldBeLTE from './shouldBeLTE';
 import shouldBeValidEmail from './shouldBeValidEmail';
 
 export {
   required,
-  shouldBeEquals,
+  shouldBeEqualWith,
   shouldBeGTE,
   shouldBeLTE,
   shouldBeValidEmail,
