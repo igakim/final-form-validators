@@ -9,10 +9,10 @@ Object.defineProperty(exports, "required", {
     return _required["default"];
   }
 });
-Object.defineProperty(exports, "shouldBeEquals", {
+Object.defineProperty(exports, "shouldBeEqualWith", {
   enumerable: true,
   get: function get() {
-    return _shouldBeEquals["default"];
+    return _shouldBeEqualWith["default"];
   }
 });
 Object.defineProperty(exports, "shouldBeGTE", {
@@ -36,7 +36,7 @@ Object.defineProperty(exports, "shouldBeValidEmail", {
 
 var _required = _interopRequireDefault(require("./required"));
 
-var _shouldBeEquals = _interopRequireDefault(require("./shouldBeEquals"));
+var _shouldBeEqualWith = _interopRequireDefault(require("./shouldBeEqualWith"));
 
 var _shouldBeGTE = _interopRequireDefault(require("./shouldBeGTE"));
 

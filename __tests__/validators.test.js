@@ -1,9 +1,10 @@
 import {
   required,
-  shouldBeEquals,
+  shouldBeEqualWith,
   shouldBeGTE,
   shouldBeLTE,
   shouldBeValidEmail,
+  shouldBeEqualLength,
 } from '../src/validators'
 
 test('required', () => {
@@ -12,31 +13,44 @@ test('required', () => {
 });
 
 test('shouldBeEquals', () => {
-  expect(shouldBeEquals('Error')('string', 'string2')).toBe('Error');
-  expect(shouldBeEquals('Error')('string', 'string')).toBeUndefined();
+  expect(shouldBeEqualWith('string2', 'Error')('string')).toBe('Error');
+  expect(shouldBeEqualWith('string', 'Error')('string')).toBeUndefined();
 });
 
 test('shouldBeGTE', () => {
-  expect(shouldBeGTE('Error')('string', 10)).toBe('Error');
-  expect(shouldBeGTE('Error')('string', 6)).toBeUndefined();
-  expect(shouldBeGTE('Error')('string', 5)).toBeUndefined();
+  expect(shouldBeGTE(10, 'Error')('string')).toBe('Error');
+  expect(shouldBeGTE(6, 'Error')('string')).toBeUndefined();
+  expect(shouldBeGTE(5, 'Error')('string')).toBeUndefined();
   expect(() => {
-    shouldBeGTE('Error')();
+    shouldBeGTE()('string');
   }).toThrowError('Argument Error');
   expect(() => {
-    shouldBeGTE('Error')('string');
-  }).toThrowError('Argument Error');
+    shouldBeGTE('not a number')();
+  }).toThrowError('Type Error');
 });
 
 test('shouldBeLTE', () => {
-  expect(shouldBeLTE('Error')('string', 5)).toBe('Error');
-  expect(shouldBeLTE('Error')('string', 6)).toBeUndefined();
-  expect(shouldBeLTE('Error')('string', 10)).toBeUndefined();
+  expect(shouldBeLTE(5, 'Error')('string')).toBe('Error');
+  expect(shouldBeLTE(6, 'Error')('string')).toBeUndefined();
+  expect(shouldBeLTE(10, 'Error')('string')).toBeUndefined();
   expect(() => {
-    shouldBeLTE('Error')();
+    shouldBeLTE('not a number')();
+  }).toThrowError('Type Error');
+  expect(() => {
+    shouldBeLTE()();
   }).toThrowError('Argument Error');
+});
+
+test('shouldBeEqualLength', () => {
+  expect(shouldBeEqualLength(10, 'Error')('string')).toBe('Error');
+  expect(shouldBeEqualLength(6, 'Error')('string')).toBeUndefined();
+  expect(shouldBeEqualLength(7, 'Error')('string2')).toBeUndefined();
+  expect(shouldBeEqualLength(6, 'Error')('string2')).toBe('Error');
   expect(() => {
-    shouldBeLTE('Error')('string');
+    shouldBeEqualLength('not a number')();
+  }).toThrowError('Type Error');
+  expect(() => {
+    shouldBeEqualLength()();
   }).toThrowError('Argument Error');
 });
 

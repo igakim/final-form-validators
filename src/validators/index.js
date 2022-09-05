@@ -3,6 +3,7 @@ import shouldBeEqualWith from './shouldBeEqualWith';
 import shouldBeGTE from './shouldBeGTE';
 import shouldBeLTE from './shouldBeLTE';
 import shouldBeValidEmail from './shouldBeValidEmail';
+import shouldBeEqualLength from './shouldBeEqualLength';
 
 export {
   required,
@@ -10,4 +11,5 @@ export {
   shouldBeGTE,
   shouldBeLTE,
   shouldBeValidEmail,
+  shouldBeEqualLength,
 };
