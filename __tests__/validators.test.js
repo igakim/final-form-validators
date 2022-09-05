@@ -3,6 +3,7 @@ import {
   shouldBeEquals,
   shouldBeGTE,
   shouldBeLTE,
+  shouldBeValidEmail,
 } from '../src/validators'
 
 test('required', () => {
@@ -36,5 +37,18 @@ test('shouldBeLTE', () => {
   }).toThrowError('Argument Error');
   expect(() => {
     shouldBeLTE('Error')('string');
+  }).toThrowError('Argument Error');
+});
+
+test('shouldBeValidEmail', () => {
+  expect(shouldBeValidEmail('Error')('string')).toBe('Error');
+  expect(shouldBeValidEmail('Error')('string@')).toBe('Error');
+  expect(shouldBeValidEmail('Error')('string@str')).toBe('Error');
+  expect(shouldBeValidEmail('Error')('string@com')).toBe('Error');
+  expect(shouldBeValidEmail('Error')('string@uz')).toBe('Error');
+  expect(shouldBeValidEmail('Error')('string@str.uz')).toBeUndefined();
+  expect(shouldBeValidEmail('Error')('string@str.com')).toBeUndefined();
+  expect(() => {
+    shouldBeValidEmail('Error')();
   }).toThrowError('Argument Error');
 });
