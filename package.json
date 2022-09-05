@@ -1,0 +1,24 @@
+{
+  "name": "final-form-validators",
+  "version": "0.0.2",
+  "description": "",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "dist/index.js",
+    "./helpers": "dist/helpers",
+    "./validators": "dist/validators"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Igor Kim",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.13",
+    "@babel/node": "^7.18.10",
+    "@babel/preset-env": "^7.18.10"
+  }
+}
